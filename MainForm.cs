@@ -10,11 +10,11 @@ namespace FolderViewer
             InitializeComponent();
         }
 
-        private string path;
+        private string _path;
 
-        private void render()
+        private void Render()
         {
-            if (path != null)
+            if (_path != null)
             {
                 
             }
@@ -27,8 +27,8 @@ namespace FolderViewer
 
             if (dialogResult == DialogResult.OK)
             {
-                render();
-                path = folderBrowserDialog.SelectedPath;
+                Render();
+                _path = folderBrowserDialog.SelectedPath;
             }
         }
     }
