@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FolderViewer
@@ -15,6 +8,28 @@ namespace FolderViewer
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private string path;
+
+        private void render()
+        {
+            if (path != null)
+            {
+                
+            }
+        }
+
+        private void selectFolderButton_Click(object sender, EventArgs e)
+        {
+            var folderBrowserDialog = new FolderBrowserDialog();
+            var dialogResult = folderBrowserDialog.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                render();
+                path = folderBrowserDialog.SelectedPath;
+            }
         }
     }
 }

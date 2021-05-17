@@ -24,8 +24,8 @@ namespace FolderViewer
         #region Код, автоматически созданный конструктором форм Windows
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -51,6 +51,7 @@ namespace FolderViewer
             this.selectFolderButton.TabIndex = 1;
             this.selectFolderButton.Text = "Выберите папку";
             this.selectFolderButton.UseVisualStyleBackColor = true;
+            this.selectFolderButton.Click += new System.EventHandler(this.selectFolderButton_Click);
             // 
             // listView1
             // 
@@ -74,7 +75,6 @@ namespace FolderViewer
             this.Text = "FolderViewer";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
