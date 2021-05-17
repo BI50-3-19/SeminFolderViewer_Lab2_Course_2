@@ -29,19 +29,10 @@ namespace FolderViewer
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.selectFolderButton = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listView = new System.Windows.Forms.ListView();
+            this.pathBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(672, 41);
-            this.textBox1.TabIndex = 0;
             // 
             // selectFolderButton
             // 
@@ -53,35 +44,47 @@ namespace FolderViewer
             this.selectFolderButton.UseVisualStyleBackColor = true;
             this.selectFolderButton.Click += new System.EventHandler(this.selectFolderButton_Click);
             // 
-            // listView1
+            // listView
             // 
-            this.listView1.Enabled = false;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 92);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(776, 502);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(12, 92);
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(776, 502);
+            this.listView.TabIndex = 2;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
+            // 
+            // pathBox
+            // 
+            this.pathBox.Enabled = false;
+            this.pathBox.Location = new System.Drawing.Point(12, 23);
+            this.pathBox.Name = "pathBox";
+            this.pathBox.Size = new System.Drawing.Size(659, 20);
+            this.pathBox.TabIndex = 3;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 606);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.pathBox);
+            this.Controls.Add(this.listView);
             this.Controls.Add(this.selectFolderButton);
-            this.Controls.Add(this.textBox1);
             this.Name = "MainForm";
             this.Text = "FolderViewer";
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
-        #endregion
+        private System.Windows.Forms.TextBox pathBox;
 
         private System.Windows.Forms.TextBox textBox1;
+
+        private System.Windows.Forms.ListView listView;
+
+        #endregion
+
         private System.Windows.Forms.Button selectFolderButton;
-        private System.Windows.Forms.ListView listView1;
     }
 }
 
