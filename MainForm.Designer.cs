@@ -32,6 +32,8 @@ namespace FolderViewer
             this.selectFolderButton = new System.Windows.Forms.Button();
             this.listView = new System.Windows.Forms.ListView();
             this.pathBox = new System.Windows.Forms.TextBox();
+            this.directoryBackwardButton = new System.Windows.Forms.Button();
+            this.directoryForwardButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // selectFolderButton
@@ -62,11 +64,35 @@ namespace FolderViewer
             this.pathBox.Size = new System.Drawing.Size(659, 20);
             this.pathBox.TabIndex = 3;
             // 
+            // directoryBackwardButton
+            // 
+            this.directoryBackwardButton.Enabled = false;
+            this.directoryBackwardButton.Location = new System.Drawing.Point(12, 54);
+            this.directoryBackwardButton.Name = "directoryBackwardButton";
+            this.directoryBackwardButton.Size = new System.Drawing.Size(44, 29);
+            this.directoryBackwardButton.TabIndex = 4;
+            this.directoryBackwardButton.Text = "<";
+            this.directoryBackwardButton.UseVisualStyleBackColor = true;
+            this.directoryBackwardButton.Click += new System.EventHandler(this.directoryBackwardButton_Click);
+            // 
+            // directoryForwardButton
+            // 
+            this.directoryForwardButton.Enabled = false;
+            this.directoryForwardButton.Location = new System.Drawing.Point(62, 54);
+            this.directoryForwardButton.Name = "directoryForwardButton";
+            this.directoryForwardButton.Size = new System.Drawing.Size(44, 29);
+            this.directoryForwardButton.TabIndex = 5;
+            this.directoryForwardButton.Text = ">";
+            this.directoryForwardButton.UseVisualStyleBackColor = true;
+            this.directoryForwardButton.Click += new System.EventHandler(this.directoryForwardButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 606);
+            this.Controls.Add(this.directoryForwardButton);
+            this.Controls.Add(this.directoryBackwardButton);
             this.Controls.Add(this.pathBox);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.selectFolderButton);
@@ -75,6 +101,11 @@ namespace FolderViewer
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button directoryBackwardButton;
+        private System.Windows.Forms.Button directoryForwardButton;
+
+        private System.Windows.Forms.Button button1;
 
         private System.Windows.Forms.TextBox pathBox;
 

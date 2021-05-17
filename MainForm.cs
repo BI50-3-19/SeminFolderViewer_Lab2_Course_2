@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -23,14 +24,19 @@ namespace FolderViewer
         }
 
         private string _path;
+        private readonly List<string> _history = new List<string>();
 
-        private void Render()
+        private void Render(bool addToHistory = true, bool disableBackward = false, bool disableForward = false)
         {
             if (_path != null)
             {
                 listView.Clear();
-                pathBox.Text = _path;
-                
+                pathBox.Text = _path.Replace("\\", "/");
+                if (addToHistory)
+                {
+                    _history.Add(_path);
+                }
+
                 var dirFiles = Directory.GetFiles(_path);
                 var dirCatalogs = Directory.GetDirectories(_path);
                 
@@ -61,8 +67,25 @@ namespace FolderViewer
 
                     listView.Items.Add(elementViewItem);
                 }
-
             }
+
+            /* if (_history.Count >= 2 && !disableBackward)
+            {
+                directoryBackwardButton.Enabled = true;
+            }
+            else
+            {
+                directoryBackwardButton.Enabled = false;
+            }
+
+            if (_history.Count >= 2 && !disableForward && _history.LastIndexOf(_path) + 1 >= _history.Count)
+            {
+                directoryForwardButton.Enabled = true;
+            }
+            else
+            {
+                directoryForwardButton.Enabled = false;
+            } */
         }
 
         private void selectFolderButton_Click(object sender, EventArgs e)
@@ -72,6 +95,7 @@ namespace FolderViewer
 
             if (dialogResult == DialogResult.OK)
             {
+                // _history.Clear();
                 _path = folderBrowserDialog.SelectedPath;
                 Render();
             }
@@ -81,9 +105,51 @@ namespace FolderViewer
         {
             if (e.Item.ImageKey == "folder")
             {
-                _path += $"/{e.Item.Text}";
-                Render();
+                _path += $"\\{e.Item.Text}";
+                /*
+                if (directoryBackwardButton.Enabled == false && _history.IndexOf(_path) == 0)
+                {
+                    _history.Clear();
+                }
+                */
+                Render(true, false, true);
             }
         }
+
+        private void directoryBackwardButton_Click(object sender, EventArgs e)
+        {
+           /* try
+            {
+                var currentPathHistoryPosition = _history.LastIndexOf(_path);
+                var previousPath = _history[currentPathHistoryPosition - 1];
+
+                _path = previousPath;
+                Render(false, currentPathHistoryPosition - 1 == 0);
+            }
+            catch (Exception exception)
+            {
+                directoryBackwardButton.Enabled = false;
+            }
+           */
+        }
+
+        private void directoryForwardButton_Click(object sender, EventArgs e)
+        {
+            /*
+            try
+            {
+                var currentPathHistoryPosition = _history.LastIndexOf(_path);
+                var nextPath = _history[currentPathHistoryPosition + 1];
+
+                _path = nextPath;
+                Render(false, false, currentPathHistoryPosition + 1 >= _history.Count);
+            }
+            catch (Exception exception)
+            {
+                directoryForwardButton.Enabled = false;
+            }
+            */
+        }
+        
     }
 }
