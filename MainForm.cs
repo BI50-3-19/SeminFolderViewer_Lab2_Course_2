@@ -68,27 +68,9 @@ namespace FolderViewer
                     listView.Items.Add(elementViewItem);
                 }
             }
-
-            /* if (_history.Count >= 2 && !disableBackward)
-            {
-                directoryBackwardButton.Enabled = true;
-            }
-            else
-            {
-                directoryBackwardButton.Enabled = false;
-            }
-
-            if (_history.Count >= 2 && !disableForward && _history.LastIndexOf(_path) + 1 >= _history.Count)
-            {
-                directoryForwardButton.Enabled = true;
-            }
-            else
-            {
-                directoryForwardButton.Enabled = false;
-            } */
         }
 
-        private void selectFolderButton_Click(object sender, EventArgs e)
+        private void SelectFolderButton_Click(object sender, EventArgs e)
         {
             var folderBrowserDialog = new FolderBrowserDialog();
             var dialogResult = folderBrowserDialog.ShowDialog();
@@ -101,7 +83,7 @@ namespace FolderViewer
             }
         }
         
-        private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void ListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (e.Item.ImageKey == "folder")
             {
@@ -115,41 +97,5 @@ namespace FolderViewer
                 Render(true, false, true);
             }
         }
-
-        private void directoryBackwardButton_Click(object sender, EventArgs e)
-        {
-           /* try
-            {
-                var currentPathHistoryPosition = _history.LastIndexOf(_path);
-                var previousPath = _history[currentPathHistoryPosition - 1];
-
-                _path = previousPath;
-                Render(false, currentPathHistoryPosition - 1 == 0);
-            }
-            catch (Exception exception)
-            {
-                directoryBackwardButton.Enabled = false;
-            }
-           */
-        }
-
-        private void directoryForwardButton_Click(object sender, EventArgs e)
-        {
-            /*
-            try
-            {
-                var currentPathHistoryPosition = _history.LastIndexOf(_path);
-                var nextPath = _history[currentPathHistoryPosition + 1];
-
-                _path = nextPath;
-                Render(false, false, currentPathHistoryPosition + 1 >= _history.Count);
-            }
-            catch (Exception exception)
-            {
-                directoryForwardButton.Enabled = false;
-            }
-            */
-        }
-        
     }
 }

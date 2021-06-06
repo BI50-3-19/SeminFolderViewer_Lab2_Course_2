@@ -32,8 +32,7 @@ namespace FolderViewer
             this.selectFolderButton = new System.Windows.Forms.Button();
             this.listView = new System.Windows.Forms.ListView();
             this.pathBox = new System.Windows.Forms.TextBox();
-            this.directoryBackwardButton = new System.Windows.Forms.Button();
-            this.directoryForwardButton = new System.Windows.Forms.Button();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // selectFolderButton
@@ -44,17 +43,17 @@ namespace FolderViewer
             this.selectFolderButton.TabIndex = 1;
             this.selectFolderButton.Text = "Выберите папку";
             this.selectFolderButton.UseVisualStyleBackColor = true;
-            this.selectFolderButton.Click += new System.EventHandler(this.selectFolderButton_Click);
+            this.selectFolderButton.Click += new System.EventHandler(this.SelectFolderButton_Click);
             // 
             // listView
             // 
             this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(12, 92);
+            this.listView.Location = new System.Drawing.Point(12, 59);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(776, 502);
+            this.listView.Size = new System.Drawing.Size(776, 535);
             this.listView.TabIndex = 2;
             this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
+            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.ListView_ItemSelectionChanged);
             // 
             // pathBox
             // 
@@ -64,35 +63,19 @@ namespace FolderViewer
             this.pathBox.Size = new System.Drawing.Size(659, 20);
             this.pathBox.TabIndex = 3;
             // 
-            // directoryBackwardButton
+            // treeView1
             // 
-            this.directoryBackwardButton.Enabled = false;
-            this.directoryBackwardButton.Location = new System.Drawing.Point(12, 54);
-            this.directoryBackwardButton.Name = "directoryBackwardButton";
-            this.directoryBackwardButton.Size = new System.Drawing.Size(44, 29);
-            this.directoryBackwardButton.TabIndex = 4;
-            this.directoryBackwardButton.Text = "<";
-            this.directoryBackwardButton.UseVisualStyleBackColor = true;
-            this.directoryBackwardButton.Click += new System.EventHandler(this.directoryBackwardButton_Click);
-            // 
-            // directoryForwardButton
-            // 
-            this.directoryForwardButton.Enabled = false;
-            this.directoryForwardButton.Location = new System.Drawing.Point(62, 54);
-            this.directoryForwardButton.Name = "directoryForwardButton";
-            this.directoryForwardButton.Size = new System.Drawing.Size(44, 29);
-            this.directoryForwardButton.TabIndex = 5;
-            this.directoryForwardButton.Text = ">";
-            this.directoryForwardButton.UseVisualStyleBackColor = true;
-            this.directoryForwardButton.Click += new System.EventHandler(this.directoryForwardButton_Click);
+            this.treeView1.Location = new System.Drawing.Point(827, 59);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(331, 534);
+            this.treeView1.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 606);
-            this.Controls.Add(this.directoryForwardButton);
-            this.Controls.Add(this.directoryBackwardButton);
+            this.ClientSize = new System.Drawing.Size(1165, 609);
+            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.pathBox);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.selectFolderButton);
@@ -100,10 +83,8 @@ namespace FolderViewer
             this.Text = "FolderViewer";
             this.ResumeLayout(false);
             this.PerformLayout();
-        }
 
-        private System.Windows.Forms.Button directoryBackwardButton;
-        private System.Windows.Forms.Button directoryForwardButton;
+        }
 
         private System.Windows.Forms.Button button1;
 
@@ -116,6 +97,7 @@ namespace FolderViewer
         #endregion
 
         private System.Windows.Forms.Button selectFolderButton;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 
