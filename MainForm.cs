@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace FolderViewer
@@ -24,18 +21,13 @@ namespace FolderViewer
         }
 
         private string _path;
-        private readonly List<string> _history = new List<string>();
 
-        private void Render(bool addToHistory = true, bool disableBackward = false, bool disableForward = false)
+        private void Render()
         {
             if (_path != null)
             {
                 listView.Clear();
                 pathBox.Text = _path.Replace("\\", "/");
-                if (addToHistory)
-                {
-                    _history.Add(_path);
-                }
 
                 var dirFiles = Directory.GetFiles(_path);
                 var dirCatalogs = Directory.GetDirectories(_path);
@@ -94,7 +86,7 @@ namespace FolderViewer
                     _history.Clear();
                 }
                 */
-                Render(true, false, true);
+                Render();
             }
         }
     }
