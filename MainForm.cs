@@ -31,7 +31,7 @@ namespace FolderViewer
 
                 var dirFiles = Directory.GetFiles(_path);
                 var dirCatalogs = Directory.GetDirectories(_path);
-                
+
                 foreach (var file in dirFiles)
                 {
                     var correctElementPath = file.Remove(0, file.LastIndexOf('\\') + 1);
@@ -45,7 +45,7 @@ namespace FolderViewer
 
                     listView.Items.Add(elementViewItem);
                 }
-                
+
                 foreach (var directory in dirCatalogs)
                 {
                     var correctElementPath = directory.Remove(0, directory.LastIndexOf('\\') + 1);
@@ -62,6 +62,29 @@ namespace FolderViewer
             }
         }
 
+        private TreeNode GenerateTreeNode(string path)
+        {
+            var correctElementPath = path.Remove(0, path.LastIndexOf('\\') + 1);
+            var parent = new TreeNode(correctElementPath);
+            var dirCatalogs = Directory.GetDirectories(path);
+
+            foreach (var directory in dirCatalogs)
+            {
+                parent.Nodes.Add(GenerateTreeNode(directory));
+            }
+
+            return parent;
+        }
+
+        private void RenderTreeView()
+        {
+            var dirCatalogs = Directory.GetDirectories(_path);
+            foreach (var directory in dirCatalogs)
+            {
+                treeView.Nodes.Add(GenerateTreeNode(directory));
+            }
+        }
+
         private void SelectFolderButton_Click(object sender, EventArgs e)
         {
             var folderBrowserDialog = new FolderBrowserDialog();
@@ -69,23 +92,17 @@ namespace FolderViewer
 
             if (dialogResult == DialogResult.OK)
             {
-                // _history.Clear();
                 _path = folderBrowserDialog.SelectedPath;
                 Render();
+                RenderTreeView();
             }
         }
-        
+
         private void ListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (e.Item.ImageKey == "folder")
             {
                 _path += $"\\{e.Item.Text}";
-                /*
-                if (directoryBackwardButton.Enabled == false && _history.IndexOf(_path) == 0)
-                {
-                    _history.Clear();
-                }
-                */
                 Render();
             }
         }

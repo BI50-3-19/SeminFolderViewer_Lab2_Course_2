@@ -32,7 +32,7 @@ namespace FolderViewer
             this.selectFolderButton = new System.Windows.Forms.Button();
             this.listView = new System.Windows.Forms.ListView();
             this.pathBox = new System.Windows.Forms.TextBox();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.treeView = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // selectFolderButton
@@ -63,19 +63,19 @@ namespace FolderViewer
             this.pathBox.Size = new System.Drawing.Size(659, 20);
             this.pathBox.TabIndex = 3;
             // 
-            // treeView1
+            // treeView
             // 
-            this.treeView1.Location = new System.Drawing.Point(827, 59);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(331, 534);
-            this.treeView1.TabIndex = 4;
+            this.treeView.Location = new System.Drawing.Point(827, 59);
+            this.treeView.Name = "treeView";
+            this.treeView.Size = new System.Drawing.Size(331, 534);
+            this.treeView.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1165, 609);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.treeView);
             this.Controls.Add(this.pathBox);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.selectFolderButton);
@@ -97,7 +97,7 @@ namespace FolderViewer
         #endregion
 
         private System.Windows.Forms.Button selectFolderButton;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView treeView;
     }
 }
 
